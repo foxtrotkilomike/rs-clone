@@ -12,8 +12,11 @@ async function getUserById(userId) {
   return user;
 }
 
-async function updateUser(userId, articlesObject, recipesObject) {
-  const res = await User.updateOne({ _id: userId }, { articles: articlesObject, recipes: recipesObject });
+async function updateUser(userId, articlesObject, recipesObject, productsObject) {
+  const res = await User.updateOne(
+    { _id: userId },
+    { articles: articlesObject, recipes: recipesObject, products: productsObject }
+  );
 
   return res.modifiedCount;
 }
