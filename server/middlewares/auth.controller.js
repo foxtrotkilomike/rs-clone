@@ -57,6 +57,7 @@ function signin(req, res) {
         name: user.name,
         articles: user.articles,
         recipes: user.recipes,
+        products: user.products,
       });
     }
   });

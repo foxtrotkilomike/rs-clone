@@ -32,9 +32,28 @@ const recipesQueryMap = {
       { $gte: Number(minPrice) || MIN_SERVING_PRICE, $lte: Number(maxPrice) || MAX_SERVING_PRICE },
     ];
   },
-  ingredients: (passedValue) => {
+  ingredientsAll: (passedValue) => {
     const ingredients = passedValue.split(',');
-    return ['extendedIngredients.name', { $in: ingredients }];
+    return ['extendedIngredients.nameClean', { $all: ingredients }];
+  },
+  ingredientsExceptOne: (passedValue) => {
+    const ingredients = passedValue.split(',');
+    const ingredientsLength = ingredients.length;
+    // const selectorsArray = createSelectorsArray(ingredients);
+    return [
+      'extendedIngredients.nameClean',
+      {
+        $or: [
+          {
+            $size: ingredientsLength,
+            $all: [
+              /* all ingredients except one
+               */
+            ],
+          },
+        ],
+      },
+    ];
   },
   cuisines: (passedValue) => {
     const cuisines = passedValue.split(',');
