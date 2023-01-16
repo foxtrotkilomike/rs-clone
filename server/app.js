@@ -19,7 +19,7 @@ process.on('unhandledRejection', (error) => {
 });
 
 const corsOptions = {
-  origin: ['http://localhost:63342', 'http://127.0.0.1:63342', 'http://localhost:8080', 'http://127.0.0.1:8080'],
+  origin: true,
   allowedHeaders: ['Content-Type'],
   credentials: true,
   exposedHeaders: ['set-cookie'],
