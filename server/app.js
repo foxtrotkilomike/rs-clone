@@ -15,7 +15,7 @@ const errorMessages = require('./errors/errorMessages.config');
 const app = express();
 
 process.on('unhandledRejection', (error) => {
-  console.log('unhandledRejection', error.message);
+  console.log('UnhandledRejection', error.message);
 });
 
 const corsOptions = {
